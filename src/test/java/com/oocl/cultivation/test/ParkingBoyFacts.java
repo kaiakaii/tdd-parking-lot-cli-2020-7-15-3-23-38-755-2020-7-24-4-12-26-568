@@ -67,6 +67,7 @@ class ParkingBoyFacts {
         ParkingLot parkingLot = new ParkingLot();
         Car myCar = new Car();
         CarTicket carTicket = parkingLot.park(myCar);
+        parkingLot.fetchCar(carTicket);
         //when
         Car car = parkingLot.fetchCar(carTicket);
         //then

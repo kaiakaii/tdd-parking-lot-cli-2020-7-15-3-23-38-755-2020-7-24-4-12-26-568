@@ -8,11 +8,14 @@ public class ParkingLot {
     public CarTicket park(Car car) {
         CarTicket carTicket = new CarTicket();
         parkCars.put(carTicket,car);
+//        carTicket.setOverdue(true);
         return carTicket;
     }
 
     public Car fetchCar(CarTicket carTicket) {
-        if (parkCars.get(carTicket) != null) return parkCars.get(carTicket);
-        return null;
+        if (carTicket == null) return null;
+        if (carTicket.isOverdue())return null;
+        carTicket.setOverdue(true);
+        return parkCars.get(carTicket);
     }
 }
