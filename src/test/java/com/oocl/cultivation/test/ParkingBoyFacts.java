@@ -53,13 +53,22 @@ class ParkingBoyFacts {
     void should_null_when_fetch_car_given_wrong_tickets() {
         //given
         ParkingLot parkingLot = new ParkingLot();
-        Map<CarTicket,Car> parkCars = new HashMap<>();
-        Car myCar = new Car();
-        CarTicket myCarTickets = parkingLot.park(myCar);
-        parkCars.put(myCarTickets,myCar);
+
         CarTicket hisTickets = null;
         //when
         Car car = parkingLot.fetchCar(hisTickets);
+        //then
+        assertEquals(null,car);
+    }
+
+    @Test
+    void should_null_when_fetch_car_given_overdue_tickets() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car myCar = new Car();
+        CarTicket carTicket = parkingLot.park(myCar);
+        //when
+        Car car = parkingLot.fetchCar(carTicket);
         //then
         assertEquals(null,car);
     }
