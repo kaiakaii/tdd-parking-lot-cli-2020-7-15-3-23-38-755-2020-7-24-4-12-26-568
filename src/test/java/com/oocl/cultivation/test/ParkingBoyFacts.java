@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyFacts {
     @Test
@@ -41,12 +40,29 @@ class ParkingBoyFacts {
         ParkingLot parkingLot = new ParkingLot();
         Map<CarTicket,Car> parkCars = new HashMap<>();
         Car myCar = new Car();
-        CarTicket carTickets = parkingLot.park(myCar);
+        CarTicket myCarTickets = parkingLot.park(myCar);
         parkCars.put(new CarTicket(),new Car());
-        parkCars.put(carTickets,myCar);
+        parkCars.put(myCarTickets,myCar);
         //when
-        Car car = parkingLot.fetchCar(carTickets);
+        Car car = parkingLot.fetchCar(myCarTickets);
         //then
         assertEquals(car,myCar);
+    }
+
+    @Test
+    void should_null_when_fetch_car_given_wrong_tickets() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Map<CarTicket,Car> parkCars = new HashMap<>();
+        Car myCar = new Car();
+        CarTicket myCarTickets = parkingLot.park(myCar);
+        Car hisCar = new Car();
+        CarTicket hisTickets = parkingLot.park(hisCar);
+        parkCars.put(hisTickets,hisCar);
+        parkCars.put(myCarTickets,myCar);
+        //when
+        Car car = parkingLot.fetchCar(hisTickets);
+        //then
+        assertEquals(null,car);
     }
 }
