@@ -73,4 +73,17 @@ class ParkingBoyFacts {
         //then
         assertEquals(null,car);
     }
+
+    @Test
+    void should_null_when_park_given_car() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        for (int i =0;i<10;i++){
+            parkingLot.park(new Car());
+        }
+        //when
+        CarTicket carTicket = parkingLot.park(new Car());
+        //then
+        assertNull(carTicket);
+    }
 }
