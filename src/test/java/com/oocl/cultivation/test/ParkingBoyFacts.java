@@ -56,10 +56,8 @@ class ParkingBoyFacts {
         Map<CarTicket,Car> parkCars = new HashMap<>();
         Car myCar = new Car();
         CarTicket myCarTickets = parkingLot.park(myCar);
-        Car hisCar = new Car();
-        CarTicket hisTickets = parkingLot.park(hisCar);
-        parkCars.put(hisTickets,hisCar);
         parkCars.put(myCarTickets,myCar);
+        CarTicket hisTickets = null;
         //when
         Car car = parkingLot.fetchCar(hisTickets);
         //then
