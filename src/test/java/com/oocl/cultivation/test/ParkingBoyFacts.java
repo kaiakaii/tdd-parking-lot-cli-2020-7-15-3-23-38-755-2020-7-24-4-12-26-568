@@ -4,18 +4,29 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.CarTicket;
 import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ParkingBoyFacts {
+    private Collection<ParkingLot> parkingLots;
+    @BeforeAll
+    void init(){
+        parkingLots = new LinkedList<>();
+    }
     @Test
     void should_carTicket_when_park_given_car() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car car = new Car();
         //when
         CarTicket carTicket = parkingBoy.park(car);
@@ -26,7 +37,8 @@ class ParkingBoyFacts {
     @Test
     void should_car_when_fetch_car_given_car_ticket() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car car = new Car();
         CarTicket carTicket = parkingBoy.park(car);
         //when
@@ -39,7 +51,8 @@ class ParkingBoyFacts {
     @Test
     void should_car_when_fetch_given_cars() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car myCar = new Car();
         Car hisCar = new Car();
         CarTicket myCarTickets = parkingBoy.park(myCar);
@@ -55,7 +68,8 @@ class ParkingBoyFacts {
     @Test
     void should_null_when_fetch_car_given_wrong_tickets() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.getParkingLots().add(new ParkingLot(10));
 
         CarTicket hisTickets = null;
         //when
@@ -67,7 +81,8 @@ class ParkingBoyFacts {
     @Test
     void should_null_when_fetch_car_given_overdue_tickets() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car myCar = new Car();
         CarTicket carTicket = parkingBoy.park(myCar);
         parkingBoy.fetchCar(carTicket);
@@ -80,7 +95,8 @@ class ParkingBoyFacts {
     @Test
     void should_null_when_park_given_car() {
         //given
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.getParkingLots().add(new ParkingLot(10));
         for (int i = 0; i < 11; i++) {
             parkingBoy.park(new Car());
         }

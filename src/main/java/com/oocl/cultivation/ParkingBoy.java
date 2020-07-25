@@ -1,8 +1,15 @@
 package com.oocl.cultivation;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class ParkingBoy {
-    private ParkingLot parkingLot;
+    private Collection<ParkingLot> parkingLots;
     private String message;
+
+    public Collection<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
 
     public String getMessage() {
         return message;
@@ -12,16 +19,30 @@ public class ParkingBoy {
         this.message = message;
     }
 
-    public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public ParkingBoy(Collection<ParkingLot> parkingLots) {
+        this.parkingLots = new ArrayList<>();
     }
 
     public CarTicket park(Car car) {
-        if (parkingLot.getParkCars().size() > parkingLot.getCapacity()) {
+        ParkingLot targetSpace = null;
+        for (ParkingLot parkingLot:
+             parkingLots) {
+            targetSpace = parkingLot;
+            if(parkingLot.getParkCars().size() > parkingLot.getCapacity()){
+                targetSpace = null;
+                continue;
+            }
+            break;
+        }
+        if (targetSpace == null){
             this.setMessage("Not enough position.");
             return null;
         }
-        return parkingLot.park(car);
+//        if (parkingLot.getParkCars().size() > parkingLot.getCapacity()) {
+//            this.setMessage("Not enough position.");
+//            return null;
+//        }
+        return targetSpace.park(car);
     }
 
     public Car fetchCar(CarTicket carTicket) {
@@ -29,12 +50,14 @@ public class ParkingBoy {
             this.setMessage("Please provide your parking ticket.");
             return null;
         }
-        Car fetchedCar = parkingLot.fetchCar(carTicket);
+        Car fetchedCar = null;
+        for (ParkingLot parkingLot:parkingLots) {
+            fetchedCar = parkingLot.fetchCar(carTicket);
+        }
         if (fetchedCar == null) {
             this.setMessage("Unrecognized parking ticket.");
             return null;
         }
-        this.setMessage("");
         return fetchedCar;
     }
 
