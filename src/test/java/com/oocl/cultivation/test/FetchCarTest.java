@@ -20,6 +20,6 @@ public class FetchCarTest {
         Car fetchCar = parkingBoy.fetchCar(carTicket);
         //then
         assertNull(fetchCar);
-        assertEquals("无法识别的停车罚单",parkingBoy.getMessage());
+        assertEquals("Unrecognized parking ticket.",parkingBoy.getMessage());
     }
 }

@@ -21,8 +21,13 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(CarTicket carTicket) {
-        if (carTicket == null) return null;
-        return parkingLot.fetchCar(carTicket);
+        Car fetchedCar = parkingLot.fetchCar(carTicket);
+        if (fetchedCar == null) {
+            this.setMessage("Unrecognized parking ticket.");
+            return null;
+        }
+        this.setMessage("");
+        return fetchedCar;
     }
 
 }
