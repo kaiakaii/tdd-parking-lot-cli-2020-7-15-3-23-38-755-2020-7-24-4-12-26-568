@@ -17,6 +17,10 @@ public class ParkingBoy {
     }
 
     public CarTicket park(Car car) {
+        if (parkingLot.getParkCars().size() > parkingLot.getCapacity()) {
+            this.setMessage("Not enough position.");
+            return null;
+        }
         return parkingLot.park(car);
     }
 
