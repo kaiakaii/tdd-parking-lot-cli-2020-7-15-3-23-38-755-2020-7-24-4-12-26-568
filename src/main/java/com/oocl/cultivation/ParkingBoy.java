@@ -2,6 +2,15 @@ package com.oocl.cultivation;
 
 public class ParkingBoy {
     private ParkingLot parkingLot;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public ParkingBoy(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
@@ -15,4 +24,5 @@ public class ParkingBoy {
         if (carTicket == null) return null;
         return parkingLot.fetchCar(carTicket);
     }
+
 }
