@@ -1,9 +1,6 @@
 package com.oocl.cultivation.test;
 
-import com.oocl.cultivation.Car;
-import com.oocl.cultivation.CarTicket;
-import com.oocl.cultivation.ParkingBoy;
-import com.oocl.cultivation.ParkingLot;
+import com.oocl.cultivation.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -46,5 +43,19 @@ public class ParkCarTest {
         CarTicket carTicket = parkingBoy.park(new Car());
         //then
         assertNotNull(carTicket);
+    }
+    @Test
+    void should_return_park_in_more_open_spaces_when_park_given_car() {
+        //given
+        ParkingBoy smartParkingBoy = new SmartPakingBoy(new LinkedList<ParkingLot>());
+        ParkingLot smallParkingLot = new ParkingLot(10);
+        ParkingLot bigParkingLot = new ParkingLot(15);
+        smartParkingBoy.getParkingLots().add(smallParkingLot);
+        smartParkingBoy.getParkingLots().add(bigParkingLot);
+        Car myCar = new Car();
+        //when
+        CarTicket carTicket = smartParkingBoy.park(myCar);
+        //then
+        assertEquals(myCar,bigParkingLot.getParkCars().get(carTicket));
     }
 }
