@@ -26,7 +26,7 @@ public class ManagerTest {
         parkManager.setParkStrategy(new ParkingBoy(this.parkingLots));
         Car myCar = new Car();
         //when
-        CarTicket carTicket = parkManager.getParkStrategy().park(myCar);
+        CarTicket carTicket = parkManager.assignBoyToPark(myCar);
         //then
         assertNotNull(carTicket);
 
@@ -51,7 +51,7 @@ public class ManagerTest {
         Car car = new Car();
         CarTicket carTicket = null;
         //when
-        Car myCar = parkManager.getParkStrategy().fetchCar(carTicket);
+        Car myCar = parkManager.assignBoyToFetch(carTicket);
         //then
         assertEquals("Fetch Error!",parkManager.getMessage());
     }
