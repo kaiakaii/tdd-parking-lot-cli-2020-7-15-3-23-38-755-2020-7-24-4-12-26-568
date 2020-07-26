@@ -16,16 +16,19 @@ public class ParkingLot {
     }
 
     public ParkingLot(int capacity) {
-        this.capacity = 10;
+        this.capacity = capacity;
     }
 
     public CarTicket park(Car car) {
         CarTicket carTicket = new CarTicket();
         parkCars.put(carTicket, car);
+        capacity--;
         return carTicket;
     }
 
     public Car fetchCar(CarTicket carTicket) {
-        return parkCars.remove(carTicket);
+        Car fetchCar = parkCars.remove(carTicket);
+        capacity++;
+        return fetchCar;
     }
 }

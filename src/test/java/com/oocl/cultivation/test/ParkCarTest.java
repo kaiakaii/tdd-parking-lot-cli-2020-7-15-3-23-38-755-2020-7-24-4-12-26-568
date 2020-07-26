@@ -47,7 +47,7 @@ public class ParkCarTest {
     @Test
     void should_return_park_in_more_open_spaces_when_park_given_car() {
         //given
-        ParkingBoy smartParkingBoy = new SmartPakingBoy(new LinkedList<ParkingLot>());
+        ParkingBoy smartParkingBoy = new SmartPakingBoy(new LinkedList<>());
         ParkingLot smallParkingLot = new ParkingLot(10);
         ParkingLot bigParkingLot = new ParkingLot(15);
         smartParkingBoy.getParkingLots().add(smallParkingLot);
