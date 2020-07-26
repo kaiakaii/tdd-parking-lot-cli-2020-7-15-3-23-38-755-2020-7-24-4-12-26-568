@@ -21,7 +21,7 @@ public class ManagerTest {
     @Test
     void should_return_car_when_park_given_manager_assign_boy() {
         //given
-        ParkManager parkManager = new ParkManager();
+        ParkManager parkManager = new ParkManager(new ParkingLot(10));
         this.parkingLots.add(new ParkingLot(10));
         parkManager.setParkStrategy(new ParkingBoy(this.parkingLots));
         Car myCar = new Car();
@@ -29,6 +29,18 @@ public class ManagerTest {
         CarTicket carTicket = parkManager.getParkStrategy().park(myCar);
         //then
         assertNotNull(carTicket);
+
+    }
+    @Test
+    void should_return_car_when_fetch_given_manager() {
+        //given
+        ParkManager parkManager = new ParkManager(new ParkingLot(10));
+        Car car = new Car();
+        CarTicket carTicket = parkManager.park(car);
+        //when
+        Car myCar = parkManager.fetch(carTicket);
+        //then
+        assertEquals(car,myCar);
 
     }
 }
