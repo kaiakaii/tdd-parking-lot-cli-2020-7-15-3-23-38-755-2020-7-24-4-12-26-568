@@ -2,12 +2,13 @@ package com.oocl.cultivation;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class ParkingBoy implements ParkStrategy {
-    private Collection<ParkingLot> parkingLots;
+    private List<ParkingLot> parkingLots;
     private String message;
 
-    public Collection<ParkingLot> getParkingLots() {
+    public List<ParkingLot> getParkingLots() {
         return parkingLots;
     }
 
@@ -19,8 +20,8 @@ public class ParkingBoy implements ParkStrategy {
         this.message = message;
     }
 
-    public ParkingBoy(Collection<ParkingLot> parkingLots) {
-        this.parkingLots = new ArrayList<>();
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots = parkingLots;
     }
 
     public CarTicket park(Car car) {
@@ -28,7 +29,7 @@ public class ParkingBoy implements ParkStrategy {
         for (ParkingLot parkingLot:
              parkingLots) {
             targetSpace = parkingLot;
-            if(parkingLot.getParkCars().size() > parkingLot.getCapacity()){
+            if(parkingLot.getParkCars().size() >= parkingLot.getCapacity()){
                 targetSpace = null;
                 continue;
             }

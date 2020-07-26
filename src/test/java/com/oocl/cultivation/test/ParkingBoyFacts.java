@@ -9,22 +9,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
 class ParkingBoyFacts {
-    private Collection<ParkingLot> parkingLots;
-    @BeforeAll
-    void init(){
-        parkingLots = new LinkedList<>();
-    }
+
     @Test
     void should_carTicket_when_park_given_car() {
         //given
+        List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car car = new Car();
@@ -37,6 +31,7 @@ class ParkingBoyFacts {
     @Test
     void should_car_when_fetch_car_given_car_ticket() {
         //given
+        List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car car = new Car();
@@ -51,6 +46,7 @@ class ParkingBoyFacts {
     @Test
     void should_car_when_fetch_given_cars() {
         //given
+        List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car myCar = new Car();
@@ -68,6 +64,7 @@ class ParkingBoyFacts {
     @Test
     void should_null_when_fetch_car_given_wrong_tickets() {
         //given
+        List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
 
@@ -81,6 +78,7 @@ class ParkingBoyFacts {
     @Test
     void should_null_when_fetch_car_given_overdue_tickets() {
         //given
+        List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car myCar = new Car();
@@ -95,6 +93,7 @@ class ParkingBoyFacts {
     @Test
     void should_null_when_park_given_car() {
         //given
+        List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         for (int i = 0; i < 11; i++) {

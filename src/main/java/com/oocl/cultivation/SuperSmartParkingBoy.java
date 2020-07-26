@@ -2,10 +2,11 @@ package com.oocl.cultivation;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
 
-public class SuperSmartParkingBoy extends ParkingBoy implements ParkStrategy{
-    public SuperSmartParkingBoy(Collection<ParkingLot> parkingLots) {
+public class SuperSmartParkingBoy extends ParkingBoy {
+    public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
         super(parkingLots);
     }
 

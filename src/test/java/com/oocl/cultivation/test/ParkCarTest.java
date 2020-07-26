@@ -7,12 +7,13 @@ import org.junit.jupiter.api.TestInstance;
 
 import java.util.Collection;
 import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ParkCarTest {
-    private Collection<ParkingLot> parkingLots;
+    private List<ParkingLot> parkingLots;
     @BeforeAll
     void init(){
         parkingLots = new LinkedList<>();
