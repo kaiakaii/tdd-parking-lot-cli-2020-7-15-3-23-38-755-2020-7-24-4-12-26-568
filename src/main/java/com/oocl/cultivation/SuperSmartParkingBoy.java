@@ -1,6 +1,8 @@
 package com.oocl.cultivation;
 
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.Optional;
 
 public class SuperSmartParkingBoy extends ParkingBoy {
     public SuperSmartParkingBoy(Collection<ParkingLot> parkingLots) {
@@ -9,6 +11,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public CarTicket park(Car car) {
-        return super.park(car);
+        ;
+        Optional<ParkingLot> parkingLot = this.getParkingLots().stream()
+                .max(Comparator
+                        .comparing(maxParkingLot -> (maxParkingLot.getCapacity() - maxParkingLot.getParkCars().size()) / maxParkingLot.getCapacity()));
+        return parkingLot.get().park(car);
     }
 }

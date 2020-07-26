@@ -61,7 +61,7 @@ public class ParkCarTest {
     @Test
     void should_return_park_larger_available_position_when_super_smart_boy_park_given_car() {
         //given
-        ParkingBoy superParkingBoy = new SmartPakingBoy(new LinkedList<>());
+        ParkingBoy superParkingBoy = new SuperSmartParkingBoy(new LinkedList<>());
         ParkingLot smallParkingLot = new ParkingLot(10);
         ParkingLot bigParkingLot = new ParkingLot(15);
         superParkingBoy.getParkingLots().add(smallParkingLot);
