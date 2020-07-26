@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Optional;
 
-public class SmartPakingBoy extends ParkingBoy {
+public class SmartPakingBoy extends ParkingBoy implements ParkStrategy {
     public SmartPakingBoy(Collection<ParkingLot> parkingLots) {
         super(parkingLots);
     }

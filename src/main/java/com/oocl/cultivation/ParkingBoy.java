@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ParkingBoy {
+public class ParkingBoy implements ParkStrategy {
     private Collection<ParkingLot> parkingLots;
     private String message;
 
