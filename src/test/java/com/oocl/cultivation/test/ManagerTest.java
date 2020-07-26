@@ -9,8 +9,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ManagerTest {
     private List<ParkingLot> parkingLots;
@@ -41,6 +41,18 @@ public class ManagerTest {
         Car myCar = parkManager.fetch(carTicket);
         //then
         assertEquals(car,myCar);
-
+    }
+    @Test
+    void should_return_error_message_when_park_given_parking_error() {
+        //given
+        ParkManager parkManager = new ParkManager(new ParkingLot(10));
+        this.parkingLots.add(new ParkingLot(10));
+        parkManager.setParkStrategy(new ParkingBoy(this.parkingLots));
+        Car car = new Car();
+        CarTicket carTicket = null;
+        //when
+        Car myCar = parkManager.getParkStrategy().fetchCar(carTicket);
+        //then
+        assertEquals("Fetch Error!",parkManager.getMessage());
     }
 }
