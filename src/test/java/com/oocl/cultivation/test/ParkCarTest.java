@@ -45,7 +45,7 @@ public class ParkCarTest {
         assertNotNull(carTicket);
     }
     @Test
-    void should_return_park_in_more_open_spaces_when_park_given_car() {
+    void should_return_park_in_more_open_spaces_when_smart_boy_park_given_car() {
         //given
         ParkingBoy smartParkingBoy = new SmartPakingBoy(new LinkedList<>());
         ParkingLot smallParkingLot = new ParkingLot(10);
@@ -57,5 +57,23 @@ public class ParkCarTest {
         CarTicket carTicket = smartParkingBoy.park(myCar);
         //then
         assertEquals(myCar,bigParkingLot.getParkCars().get(carTicket));
+    }
+    @Test
+    void should_return_park_larger_available_position_when_super_smart_boy_park_given_car() {
+        //given
+        ParkingBoy superParkingBoy = new SmartPakingBoy(new LinkedList<>());
+        ParkingLot smallParkingLot = new ParkingLot(10);
+        ParkingLot bigParkingLot = new ParkingLot(15);
+        superParkingBoy.getParkingLots().add(smallParkingLot);
+        superParkingBoy.getParkingLots().add(bigParkingLot);
+        smallParkingLot.park(new Car());
+        for (int i=0;i<6;i++){
+            bigParkingLot.park(new Car());
+        }
+        Car myCar = new Car();
+        //when
+        CarTicket carTicket = superParkingBoy.park(myCar);
+        //then
+        assertEquals(myCar,smallParkingLot.getParkCars().get(carTicket));
     }
 }
