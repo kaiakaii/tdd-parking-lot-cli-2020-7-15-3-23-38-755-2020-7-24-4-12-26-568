@@ -27,12 +27,12 @@ public class FetchCarTest {
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car car = new Car();
         CarTicket carTicket = parkingBoy.park(car);
-        parkingBoy.fetchCar(carTicket);
         //when
-        Car fetchCar = parkingBoy.fetchCar(carTicket);
+        parkingBoy.fetchCar(carTicket);
         //then
-        assertNull(fetchCar);
-        assertEquals("Unrecognized parking ticket.",parkingBoy.getMessage());
+        assertThrows(Exception.class,()->{
+            parkingBoy.fetchCar(carTicket);
+        });
     }
     @Test
     void should_return_null_carTicket_when_search_message_given_wrong_carTicket() throws Exception {

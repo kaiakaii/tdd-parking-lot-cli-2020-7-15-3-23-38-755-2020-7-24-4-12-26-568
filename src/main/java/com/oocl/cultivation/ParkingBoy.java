@@ -47,8 +47,7 @@ public class ParkingBoy implements ParkStrategy {
             fetchedCar = parkingLot.fetchCar(carTicket);
         }
         if (fetchedCar == null) {
-            this.setMessage("Unrecognized parking ticket.");
-            return null;
+            throw new Exception("Unrecognized parking ticket.");
         }
         return fetchedCar;
     }
