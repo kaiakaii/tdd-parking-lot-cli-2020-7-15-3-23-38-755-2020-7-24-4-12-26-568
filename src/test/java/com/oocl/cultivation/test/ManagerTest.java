@@ -37,14 +37,12 @@ public class ManagerTest {
     void should_return_car_when_fetch_given_manager() {
         //given
         this.parkingLots.add(new ParkingLot(1));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         ParkingLot parkingLot = new ParkingLot(1);
-        ParkingBoy smartPakingBoy = new SmartPakingBoy(parkingLots);
-        ParkManager parkManager = new ParkManager(parkingBoy,parkingLot,smartPakingBoy);
+        ParkManager parkManager = new ParkManager(parkingLot);
         Car car = new Car();
-        CarTicket carTicket = parkManager.park(car);
+        CarTicket carTicket = parkManager.getParkBoys().get(0).park(car);
         //when
-        Car myCar = parkManager.fetch(carTicket);
+        Car myCar = parkManager.getParkBoys().get(0).fetchCar(carTicket);
         //then
         assertEquals(car,myCar);
     }
