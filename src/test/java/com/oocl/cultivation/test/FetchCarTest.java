@@ -40,12 +40,12 @@ public class FetchCarTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car car = new Car();
-        CarTicket carTicket = null;
-        //todo wrong ticket his ticket to fetch my car
         //when
-        Car fetchCar = parkingBoy.fetchCar(carTicket);
+        CarTicket carTicket = null;
         //then
-        assertEquals("Please provide your parking ticket.",parkingBoy.getMessage());
+        assertThrows(Exception.class,()->{
+            parkingBoy.fetchCar(carTicket);
+        });
     }
 
 }
