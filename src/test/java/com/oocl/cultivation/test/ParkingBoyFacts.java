@@ -67,12 +67,12 @@ class ParkingBoyFacts {
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
-
-        CarTicket hisTickets = null;
         //when
-        Car car = parkingBoy.fetchCar(hisTickets);
+        CarTicket hisTickets = null;
         //then
-        assertNull(car);
+        assertThrows(Exception.class,()->{
+            parkingBoy.fetchCar(hisTickets);
+        });
     }
 
     @Test
@@ -83,11 +83,12 @@ class ParkingBoyFacts {
         parkingBoy.getParkingLots().add(new ParkingLot(10));
         Car myCar = new Car();
         CarTicket carTicket = parkingBoy.park(myCar);
-        parkingBoy.fetchCar(carTicket);
         //when
-        Car car = parkingBoy.fetchCar(carTicket);
+        parkingBoy.fetchCar(carTicket);
         //then
-        assertNull(car);
+        assertThrows(Exception.class,()->{
+            parkingBoy.fetchCar(carTicket);
+        });
     }
 
     @Test
@@ -95,13 +96,12 @@ class ParkingBoyFacts {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        parkingBoy.getParkingLots().add(new ParkingLot(10));
-        for (int i = 0; i < 11; i++) {
-            parkingBoy.park(new Car());
-        }
+        parkingBoy.getParkingLots().add(new ParkingLot(1));
         //when
-        CarTicket carTicket = parkingBoy.park(new Car());
+        parkingBoy.park(new Car());
         //then
-        assertNull(carTicket);
+        assertThrows(Exception.class,()->{
+            parkingBoy.park(new Car());
+        });
     }
 }

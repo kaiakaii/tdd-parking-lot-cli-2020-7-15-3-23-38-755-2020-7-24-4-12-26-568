@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
-import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -54,11 +53,11 @@ public class ManagerTest {
         ParkingLot parkingLot = new ParkingLot(1);
         ParkingBoy smartPakingBoy = new SmartPakingBoy(parkingLots);
         ParkManager parkManager = new ParkManager(parkingBoy,parkingLot,smartPakingBoy);
-        Car car = new Car();
-        CarTicket carTicket = null;
         //when
-        Car myCar = parkManager.getParkBoys().get(2).fetchCar(carTicket);
+        CarTicket carTicket = null;
         //then
-        assertEquals("Fetch Error!",parkManager.getMessage());
+        assertThrows(Exception.class,()->{
+            parkManager.getParkBoys().get(2).fetchCar(carTicket);
+        });
     }
 }
