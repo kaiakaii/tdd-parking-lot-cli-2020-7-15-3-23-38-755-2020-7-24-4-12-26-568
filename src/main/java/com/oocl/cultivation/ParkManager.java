@@ -11,16 +11,8 @@ public class ParkManager {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public ParkManager(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
-    }
-
-    public ParkingLot getParkingLot() {
-        return parkingLot;
     }
 
     public ParkStrategy getParkStrategy() {
