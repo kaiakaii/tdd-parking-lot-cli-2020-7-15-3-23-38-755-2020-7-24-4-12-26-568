@@ -4,18 +4,9 @@ import java.util.List;
 
 public class ParkingBoy implements ParkStrategy {
     private List<ParkingLot> parkingLots;
-    private String message;
 
     public List<ParkingLot> getParkingLots() {
         return parkingLots;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public ParkingBoy(List<ParkingLot> parkingLots) {

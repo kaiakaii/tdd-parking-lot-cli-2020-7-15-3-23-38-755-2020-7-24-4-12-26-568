@@ -11,7 +11,6 @@ public class SmartPakingBoy extends ParkingBoy {
 
     @Override
     public CarTicket park(Car car) {
-        //todo valid
         Optional<ParkingLot> parkingLot = this.getParkingLots().stream().max(Comparator.comparing(ParkingLot::getCapacity));
         CarTicket carTicket = null;
         try {
