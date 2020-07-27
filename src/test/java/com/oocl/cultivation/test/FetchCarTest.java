@@ -21,7 +21,7 @@ public class FetchCarTest {
         parkingLots = new LinkedList<>();
     }
     @Test
-    void should_return_unrecognizable_carTicket_when_search_message_given_wrong_carTicket() {
+    void should_return_unrecognizable_carTicket_when_search_message_given_wrong_carTicket() throws Exception {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));
@@ -35,7 +35,7 @@ public class FetchCarTest {
         assertEquals("Unrecognized parking ticket.",parkingBoy.getMessage());
     }
     @Test
-    void should_return_null_carTicket_when_search_message_given_wrong_carTicket() {
+    void should_return_null_carTicket_when_search_message_given_wrong_carTicket() throws Exception {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         parkingBoy.getParkingLots().add(new ParkingLot(10));

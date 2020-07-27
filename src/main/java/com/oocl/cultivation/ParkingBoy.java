@@ -23,32 +23,25 @@ public class ParkingBoy implements ParkStrategy {
     }
 
     @Override
-    public CarTicket park(Car car) {
+    public CarTicket park(Car car) throws Exception {
         ParkingLot targetSpace = null;
-        //todo filter
         for (ParkingLot parkingLot :
                 parkingLots) {
             targetSpace = parkingLot;
-            if (parkingLot.getParkCars().size() >= parkingLot.getCapacity()) {
+            if (targetSpace.isFull()) {
                 targetSpace = null;
                 continue;
             }
             break;
         }
-        if (targetSpace == null) {
-            this.setMessage("Not enough position.");
-            return null;
+        if (targetSpace == null){
+            throw new Exception("Not enough position.");
         }
         return targetSpace.park(car);
     }
 
     @Override
-    public Car fetchCar(CarTicket carTicket) {
-        //todo parklot
-        if (carTicket == null) {
-            this.setMessage("Please provide your parking ticket.");
-            return null;
-        }
+    public Car fetchCar(CarTicket carTicket) throws Exception {
         Car fetchedCar = null;
         for (ParkingLot parkingLot : parkingLots) {
             fetchedCar = parkingLot.fetchCar(carTicket);

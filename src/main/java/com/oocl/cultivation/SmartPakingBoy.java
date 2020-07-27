@@ -13,6 +13,12 @@ public class SmartPakingBoy extends ParkingBoy {
     public CarTicket park(Car car) {
         //todo valid
         Optional<ParkingLot> parkingLot = this.getParkingLots().stream().max(Comparator.comparing(ParkingLot::getCapacity));
-        return parkingLot.get().park(car);
+        CarTicket carTicket = null;
+        try {
+            carTicket =  parkingLot.get().park(car);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return carTicket;
     }
 }

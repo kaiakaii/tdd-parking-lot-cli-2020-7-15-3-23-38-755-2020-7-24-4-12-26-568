@@ -9,8 +9,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ParkCarTest {
     private List<ParkingLot> parkingLots;
@@ -19,34 +19,31 @@ public class ParkCarTest {
         parkingLots = new LinkedList<>();
     }
     @Test
-    void should_return_not_enough_position_when_park_given_full_parking_space() {
+    void should_return_not_enough_position_when_park_given_full_parking_space() throws Exception {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        parkingBoy.getParkingLots().add(new ParkingLot(10));
-        for (int i = 0; i < 11; i++) {
-            parkingBoy.park(new Car());
-        }
+        parkingBoy.getParkingLots().add(new ParkingLot(1));
         //when
         parkingBoy.park(new Car());
         //then
-        assertEquals("Not enough position.",parkingBoy.getMessage());
+        assertThrows(Exception.class,()->{
+            parkingBoy.park(new Car());
+        });
     }
     @Test
-    void should_return_park_car_in_next_parklot_position_when_park_given_full_parking_space() {
+    void should_return_park_car_in_next_parklot_position_when_park_given_full_parking_space()throws Exception {
         //given
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-        parkingBoy.getParkingLots().add(new ParkingLot(10));
-        parkingBoy.getParkingLots().add(new ParkingLot(10));
-        for (int i = 0; i < 11; i++) {
-            parkingBoy.park(new Car());
-        }
+        parkingBoy.getParkingLots().add(new ParkingLot(1));
+        parkingBoy.getParkingLots().add(new ParkingLot(2));
+        parkingBoy.park(new Car());
         //when
         CarTicket carTicket = parkingBoy.park(new Car());
         //then
         assertNotNull(carTicket);
     }
     @Test
-    void should_return_park_in_more_open_spaces_when_smart_boy_park_given_car() {
+    void should_return_park_in_more_open_spaces_when_smart_boy_park_given_car() throws Exception{
         //given
         ParkingBoy smartParkingBoy = new SmartPakingBoy(new LinkedList<>());
         ParkingLot smallParkingLot = new ParkingLot(10);
@@ -60,7 +57,7 @@ public class ParkCarTest {
         assertEquals(myCar,bigParkingLot.getParkCars().get(carTicket));
     }
     @Test
-    void should_return_park_larger_available_position_when_super_smart_boy_park_given_car() {
+    void should_return_park_larger_available_position_when_super_smart_boy_park_given_car()throws Exception {
         //given
         ParkingBoy superParkingBoy = new SuperSmartParkingBoy(new LinkedList<>());
         ParkingLot smallParkingLot = new ParkingLot(10);

@@ -19,7 +19,7 @@ public class ManagerTest {
         parkingLots = new LinkedList<>();
     }
     @Test
-    void should_return_car_when_park_given_manager_assign_boy() {
+    void should_return_car_when_park_given_manager_assign_boy() throws Exception {
         //given
         this.parkingLots.add(new ParkingLot(1));
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -34,7 +34,7 @@ public class ManagerTest {
 
     }
     @Test
-    void should_return_car_when_fetch_given_manager() {
+    void should_return_car_when_fetch_given_manager() throws Exception {
         //given
         this.parkingLots.add(new ParkingLot(1));
         ParkingLot parkingLot = new ParkingLot(1);
@@ -47,7 +47,7 @@ public class ManagerTest {
         assertEquals(car,myCar);
     }
     @Test
-    void should_return_error_message_when_park_given_parking_error() {
+    void should_return_error_message_when_park_given_parking_error() throws Exception {
         //given
         this.parkingLots.add(new ParkingLot(1));
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);

@@ -14,6 +14,12 @@ public class SuperSmartParkingBoy extends ParkingBoy {
         Optional<ParkingLot> parkingLot = this.getParkingLots().stream()
                 .max(Comparator
                         .comparing(maxParkingLot -> (maxParkingLot.getCapacity() - maxParkingLot.getParkCars().size()) / maxParkingLot.getCapacity()));
-        return parkingLot.get().park(car);
+        CarTicket carTicket = null;
+        try {
+            carTicket =  parkingLot.get().park(car);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return carTicket;
     }
 }

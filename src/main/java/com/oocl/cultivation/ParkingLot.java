@@ -22,14 +22,24 @@ public class ParkingLot implements ParkStrategy {
 
     @Override
     public CarTicket park(Car car) {
-
+        if (isFull()) return null;
         CarTicket carTicket = new CarTicket();
-        parkCars.put(carTicket, car);
+        this.parkCars.put(carTicket, car);
         return carTicket;
     }
 
+    public boolean isFull() {
+        if (this.parkCars.size() >= this.capacity){
+            return true;
+        }
+        return false;
+    }
+
     @Override
-    public Car fetchCar(CarTicket carTicket) {
+    public Car fetchCar(CarTicket carTicket) throws Exception {
+        if(carTicket == null){
+            throw new Exception("Please provide your parking ticket.");
+        }
         Car fetchCar = parkCars.remove(carTicket);
         return fetchCar;
     }

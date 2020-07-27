@@ -33,12 +33,4 @@ public class ParkManager {
 //        return this.getParkStrategy().fetchCar(carTicket);
 //    }
 
-
-    public CarTicket park(Car car){
-        return parkingLot.park(car);
-    }
-
-    public Car fetch(CarTicket carTicket){
-        return parkingLot.getParkCars().remove(carTicket);
-    }
 }

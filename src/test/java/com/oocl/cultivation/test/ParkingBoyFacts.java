@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParkingBoyFacts {
 
     @Test
-    void should_carTicket_when_park_given_car() {
+    void should_carTicket_when_park_given_car() throws Exception {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -29,7 +29,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_car_when_fetch_car_given_car_ticket() {
+    void should_car_when_fetch_car_given_car_ticket() throws Exception {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -44,7 +44,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_car_when_fetch_given_cars() {
+    void should_car_when_fetch_given_cars() throws Exception {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -62,7 +62,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_null_when_fetch_car_given_wrong_tickets() {
+    void should_null_when_fetch_car_given_wrong_tickets() throws Exception {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -76,7 +76,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_null_when_fetch_car_given_overdue_tickets() {
+    void should_null_when_fetch_car_given_overdue_tickets() throws Exception {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -91,7 +91,7 @@ class ParkingBoyFacts {
     }
 
     @Test
-    void should_null_when_park_given_car() {
+    void should_null_when_park_given_car() throws Exception {
         //given
         List<ParkingLot> parkingLots = new LinkedList<>();
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
