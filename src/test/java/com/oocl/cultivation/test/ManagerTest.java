@@ -21,12 +21,14 @@ public class ManagerTest {
     @Test
     void should_return_car_when_park_given_manager_assign_boy() {
         //given
-        ParkManager parkManager = new ParkManager(new ParkingLot(10));
-        this.parkingLots.add(new ParkingLot(10));
-        parkManager.setParkStrategy(new ParkingBoy(this.parkingLots));
+        this.parkingLots.add(new ParkingLot(1));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy smartPakingBoy = new SmartPakingBoy(parkingLots);
+        ParkManager parkManager = new ParkManager(parkingBoy,parkingLot,smartPakingBoy);
         Car myCar = new Car();
         //when
-        CarTicket carTicket = parkManager.assignBoyToPark(myCar);
+        CarTicket carTicket = parkManager.getParkBoys().get(0).park(myCar);
         //then
         assertNotNull(carTicket);
 
@@ -34,7 +36,11 @@ public class ManagerTest {
     @Test
     void should_return_car_when_fetch_given_manager() {
         //given
-        ParkManager parkManager = new ParkManager(new ParkingLot(10));
+        this.parkingLots.add(new ParkingLot(1));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy smartPakingBoy = new SmartPakingBoy(parkingLots);
+        ParkManager parkManager = new ParkManager(parkingBoy,parkingLot,smartPakingBoy);
         Car car = new Car();
         CarTicket carTicket = parkManager.park(car);
         //when
@@ -45,13 +51,15 @@ public class ManagerTest {
     @Test
     void should_return_error_message_when_park_given_parking_error() {
         //given
-        ParkManager parkManager = new ParkManager(new ParkingLot(10));
-        this.parkingLots.add(new ParkingLot(10));
-        parkManager.setParkStrategy(new ParkingBoy(this.parkingLots));
+        this.parkingLots.add(new ParkingLot(1));
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingBoy smartPakingBoy = new SmartPakingBoy(parkingLots);
+        ParkManager parkManager = new ParkManager(parkingBoy,parkingLot,smartPakingBoy);
         Car car = new Car();
         CarTicket carTicket = null;
         //when
-        Car myCar = parkManager.assignBoyToFetch(carTicket);
+        Car myCar = parkManager.getParkBoys().get(2).fetchCar(carTicket);
         //then
         assertEquals("Fetch Error!",parkManager.getMessage());
     }

@@ -33,7 +33,6 @@ public class FetchCarTest {
         //then
         assertNull(fetchCar);
         assertEquals("Unrecognized parking ticket.",parkingBoy.getMessage());
-        //todo assertThrows()
     }
     @Test
     void should_return_null_carTicket_when_search_message_given_wrong_carTicket() {

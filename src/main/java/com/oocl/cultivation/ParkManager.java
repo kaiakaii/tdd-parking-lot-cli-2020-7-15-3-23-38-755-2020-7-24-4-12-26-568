@@ -1,8 +1,11 @@
 package com.oocl.cultivation;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ParkManager {
-    private ParkStrategy parkStrategy;
+    private List<ParkStrategy> parkBoys;
     private ParkingLot parkingLot;
     private String message;
 
@@ -10,28 +13,25 @@ public class ParkManager {
         return message;
     }
 
-    public ParkManager(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+    public ParkManager(ParkStrategy...parkBoys) {
+        this.parkBoys = Arrays.asList(parkBoys);
     }
 
-    public ParkStrategy getParkStrategy() {
-        return parkStrategy;
+    public List<ParkStrategy> getParkBoys() {
+        return parkBoys;
     }
 
-    public void setParkStrategy(ParkStrategy parkStrategy) {
-        this.parkStrategy = parkStrategy;
-    }
-    public CarTicket assignBoyToPark(Car car){
-        return parkingLot.park(car);
-    }
+//    public CarTicket assignBoyToPark(Car car){
+//        return parkingLot.park(car);
+//    }
 
-    public Car assignBoyToFetch(CarTicket carTicket){
-        if (carTicket == null){
-            this.message = "Fetch Error!";
-            return null;
-        }
-        return this.getParkStrategy().fetchCar(carTicket);
-    }
+//    public Car assignBoyToFetch(CarTicket carTicket){
+//        if (carTicket == null){
+//            this.message = "Fetch Error!";
+//            return null;
+//        }
+//        return this.getParkStrategy().fetchCar(carTicket);
+//    }
 
 
     public CarTicket park(Car car){

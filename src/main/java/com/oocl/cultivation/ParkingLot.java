@@ -3,7 +3,7 @@ package com.oocl.cultivation;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ParkingLot {
+public class ParkingLot implements ParkStrategy {
     private Map<CarTicket, Car> parkCars = new HashMap<>();
     private int capacity;
 
@@ -20,6 +20,7 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    @Override
     public CarTicket park(Car car) {
 
         CarTicket carTicket = new CarTicket();
@@ -27,6 +28,7 @@ public class ParkingLot {
         return carTicket;
     }
 
+    @Override
     public Car fetchCar(CarTicket carTicket) {
         Car fetchCar = parkCars.remove(carTicket);
         return fetchCar;
