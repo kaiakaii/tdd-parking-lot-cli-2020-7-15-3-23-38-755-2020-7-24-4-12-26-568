@@ -37,7 +37,6 @@ public class ParkingLot implements ParkStrategy {
         if(carTicket == null){
             throw new Exception("Please provide your parking ticket.");
         }
-        Car fetchCar = parkCars.remove(carTicket);
-        return fetchCar;
+        return parkCars.remove(carTicket);
     }
 }
