@@ -1,6 +1,7 @@
 package com.oocl.cultivation;
 
 import com.oocl.cultivation.exception.NoEnoughException;
+import com.oocl.cultivation.exception.UnrecognizedTicketException;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class ParkingBoy implements ParkStrategy {
             fetchedCar = parkingLot.fetchCar(carTicket);
         }
         if (fetchedCar == null) {
-            throw new Exception("Unrecognized parking ticket.");
+            throw new UnrecognizedTicketException("Unrecognized parking ticket.");
         }
         return fetchedCar;
     }

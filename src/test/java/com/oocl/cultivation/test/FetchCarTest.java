@@ -4,6 +4,7 @@ import com.oocl.cultivation.Car;
 import com.oocl.cultivation.CarTicket;
 import com.oocl.cultivation.ParkingBoy;
 import com.oocl.cultivation.ParkingLot;
+import com.oocl.cultivation.exception.UnrecognizedTicketException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -30,7 +31,7 @@ public class FetchCarTest {
         //when
         parkingBoy.fetchCar(carTicket);
         //then
-        assertThrows(Exception.class,()->{
+        assertThrows(UnrecognizedTicketException.class,()->{
             parkingBoy.fetchCar(carTicket);
         });
     }
