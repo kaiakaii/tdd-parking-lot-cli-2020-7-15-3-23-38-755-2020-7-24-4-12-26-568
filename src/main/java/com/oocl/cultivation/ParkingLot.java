@@ -29,10 +29,7 @@ public class ParkingLot implements ParkStrategy {
     }
 
     public boolean isFull() {
-        if (this.parkCars.size() >= this.capacity){
-            return true;
-        }
-        return false;
+        return this.parkCars.size() >= this.capacity;
     }
 
     @Override
