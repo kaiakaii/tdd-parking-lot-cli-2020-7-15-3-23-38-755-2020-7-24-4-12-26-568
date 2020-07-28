@@ -1,6 +1,7 @@
 package com.oocl.cultivation.test;
 
 import com.oocl.cultivation.*;
+import com.oocl.cultivation.exception.NoEnoughException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -26,7 +27,7 @@ public class ParkCarTest {
         //when
         parkingBoy.park(new Car());
         //then
-        assertThrows(Exception.class,()->{
+        assertThrows(NoEnoughException.class,()->{
             parkingBoy.park(new Car());
         });
     }

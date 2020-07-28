@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exception.NoEnoughException;
+
 import java.util.List;
 
 public class ParkingBoy implements ParkStrategy {
@@ -26,7 +28,7 @@ public class ParkingBoy implements ParkStrategy {
             break;
         }
         if (targetSpace == null){
-            throw new Exception("Not enough position.");
+            throw new NoEnoughException("Not enough position.");
         }
         return targetSpace.park(car);
     }
