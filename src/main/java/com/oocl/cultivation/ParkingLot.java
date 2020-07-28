@@ -22,7 +22,6 @@ public class ParkingLot implements ParkStrategy {
 
     @Override
     public CarTicket park(Car car) {
-        if (isFull()) return null;
         CarTicket carTicket = new CarTicket();
         this.parkCars.put(carTicket, car);
         return carTicket;
