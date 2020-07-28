@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.cultivation.exception.NullTicketException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,7 @@ public class ParkingLot implements ParkStrategy {
     @Override
     public Car fetchCar(CarTicket carTicket) throws Exception {
         if(carTicket == null){
-            throw new Exception("Please provide your parking ticket.");
+            throw new NullTicketException("Please provide your parking ticket.");
         }
         return parkCars.remove(carTicket);
     }
